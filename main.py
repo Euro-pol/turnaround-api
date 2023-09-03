@@ -32,7 +32,7 @@ def solve():
 
 def make_response(captcha_key):
     if captcha_key == "failed":
-        return flask.jsonify({"status": "error", "message": "Captcha was not solved"})
+        return flask.jsonify({"status": "error", "token": None})
     return flask.jsonify({"status": "success", "token": captcha_key})
 
 if __name__ == "__main__":
