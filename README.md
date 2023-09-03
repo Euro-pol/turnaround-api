@@ -28,10 +28,10 @@ To get started with the turnaround-api, follow these steps:
     ln utils/utils/page.html utils/page.html
     ```
 
-    **Windows (using `mklink`)**:
+    **Windows (using `SymbolicLink`) Powershell**:
 
     ```bash
-    mklink /H "utils\page.html" "utils\utils\page.html"
+    New-Item -ItemType SymbolicLink -Path ".\utils\page.html" -Value ".\utils\utils\page.html"
     ```
 
 4. Create a Python virtual environment and activate it:
