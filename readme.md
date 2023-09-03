@@ -4,6 +4,9 @@ Cloudflare turnstile solver API, based on [turnaround](https://github.com/Body-A
 ## Example  
 Python code example [here](https://github.com/Euro-pol/turnaround-api/blob/main/example.py)
 
+## Contributing  
+Contributions are welcome, feel free to open a pull request or an issue
+
 ## Images  
 ![image1](./images/image1.png)
 ![image2](./images/image2.png)
