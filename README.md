@@ -38,7 +38,7 @@ To get started with the turnaround-api, follow these steps:
 
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate.bat
+    source venv/bin/activate  # On Windows: .\venv\Scripts\activate
     ```
 
 5. Install the required Python packages from the `requirements.txt` file:
