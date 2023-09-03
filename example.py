@@ -6,6 +6,6 @@ body = {
 	"invisible": True
 }
 
-r = requests.post("http://localhost:5000/solve", json=body)
+r = requests.post("https://turn.seized.live/solve", json=body)
 token = r.json()["token"]
 print("Solved :: " + token)
