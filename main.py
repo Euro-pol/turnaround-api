@@ -1,43 +1,43 @@
+import os
+import time
+
 import playwright.sync_api
 import requests
-import flask
-import json
-import time
-import os
+from flask import Flask, jsonify, redirect, request
 
-def setup_solver(): #please body dont sue me
-    if not os.path.exists("utils"): os.mkdir("utils")
-    files = ["https://raw.githubusercontent.com/Body-Alhoha/turnaround/main/utils/solver.py", "https://raw.githubusercontent.com/Body-Alhoha/turnaround/main/utils/page.html"]
-    for file in files:
-        r = requests.get(file).text
-        with open("utils/" + file.split("/")[-1], "w") as f:
-            f.write(r)
+from utils.utils import solver
 
-setup_solver()
-app = flask.Flask(__name__)
-from utils import solver
+app = Flask(__name__)
+
 
 @app.route("/")
 def index():
-    return flask.redirect("https://github.com/Euro-pol/turnaround-api")
+    return redirect("https://github.com/Euro-pol/turnaround-api")
+
 
 @app.route("/solve", methods=["POST"])
 def solve():
-    json_data = flask.request.json
-    sitekey = json_data["sitekey"]
-    invisible = json_data["invisible"]
-    url = json_data["url"]
-    with playwright.sync_api.sync_playwright() as p:
-        s = solver.Solver(p, headless=True)
-        start_time = time.time()
-        token = s.solve(url, sitekey, invisible)
-        #print(f"took {time.time() - start_time} seconds")
-        return make_response(token)
+    json_data = request.json
+    sitekey = json_data.get("sitekey")
+    invisible = json_data.get("invisible")
+    url = json_data.get("url")
 
-def make_response(captcha_key):
-    if captcha_key == "failed":
-        return flask.jsonify({"status": "error", "token": None})
-    return flask.jsonify({"status": "success", "token": captcha_key})
+    if not all([sitekey, invisible, url]):
+        return make_response("error", None)
+
+    with playwright.sync_api.sync_playwright() as p:
+        s = solver.Solver(p)
+        # start_time = time.time()
+        token = s.solve(url, sitekey, invisible)
+        # print(f"took {time.time() - start_time} seconds")
+        return make_response("success", token)
+
+
+def make_response(status, token):
+    if status == "error" or token == "failed":
+        return jsonify({"status": "error", "token": None})
+    return jsonify({"status": "success", "token": token})
+
 
 if __name__ == "__main__":
     app.run()

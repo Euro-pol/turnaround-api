@@ -1,0 +1,4 @@
+requests==2.31.0
+flask==2.3.3
+playwright==1.37.0
+colorama==0.4.6
