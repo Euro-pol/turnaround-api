@@ -17,6 +17,10 @@ setup_solver()
 app = flask.Flask(__name__)
 from utils import solver
 
+@app.route("/")
+def index():
+    return flask.redirect("https://github.com/Euro-pol/turnaround-api")
+
 @app.route("/solve", methods=["POST"])
 def solve():
     json_data = flask.request.json
