@@ -31,7 +31,7 @@ def solve():
         s = solver.Solver(p, headless=True)
         start_time = time.time()
         token = s.solve(url, sitekey, invisible)
-        #print(f"took {time.time() - start_time} seconds")
+        print(f"took {time.time() - start_time} seconds :: " + token[:10])
         return make_response(token)
 
 def make_response(captcha_key):
