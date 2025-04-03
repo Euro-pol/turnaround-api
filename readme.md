@@ -1,5 +1,6 @@
 # turnaround-api  
-Cloudflare turnstile solver API, based on [turnaround](https://github.com/Body-Alhoha/turnaround). Made using Python & flask
+Cloudflare turnstile solver API, based on [turnaround](https://github.com/Body-Alhoha/turnaround). Made using Python & flask  
+*Public instance is no longer active
 
 ## Example  
 Python code example [here](https://github.com/Euro-pol/turnaround-api/blob/main/example.py)
