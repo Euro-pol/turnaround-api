@@ -3,7 +3,9 @@ Cloudflare turnstile solver API, based on [turnaround](https://github.com/Body-A
 *Public instance is no longer active
 
 # Sponsor
+<a href="https://www.capsolver.com/?utm_source=github&utm_medium=banner_repo&utm_campaign=turnstile&utm_term=turnaround">
 <img src="/photo_2025-03-18_11-57-05.jpg" align="center">
+</a>
 Since I don't really mantain this repo anymore, if you need something reliable you should try out CapSolver
 
 ## Example  
